@@ -15,9 +15,9 @@ jobs:
 
       - name: Push to Hugging Face Spaces
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF }}
         run: |
           git config credential.helper store
-          echo "https://groundhog2107:${HF_TOKEN}@huggingface.co" > ~/.git-credentials
+          echo "https://groundhog2107:${HF}@huggingface.co" > ~/.git-credentials
           git remote add huggingface https://huggingface.co/spaces/groundhog2107/demoText
           git push huggingface main --force
