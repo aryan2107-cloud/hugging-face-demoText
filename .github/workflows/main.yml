@@ -9,11 +9,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Push to Hugging Face Spaces
         env:
-          HG: ${{ secrets.HG}}
+          HG: ${{ secrets.HG }}
         run: |
           git remote add huggingface https://groundhog2107:$HG@huggingface.co/spaces/groundhog2107/demoText
           git push huggingface main --force
