@@ -10,14 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Push to Hugging Face Spaces
         env:
-          HF_TOKEN: ${{ secrets.HF }}
+          HG: ${{ secrets.HG}}
         run: |
-          git config credential.helper store
-          echo "https://groundhog2107:${HF}@huggingface.co" > ~/.git-credentials
-          git remote add huggingface https://huggingface.co/spaces/groundhog2107/demoText
+          git remote add huggingface https://groundhog2107:$HG@huggingface.co/spaces/groundhog2107/demoText
           git push huggingface main --force
